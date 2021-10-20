@@ -1,0 +1,38 @@
+body {
+	font-family:'Comic Sans MS';
+}
+
+.flex-container{
+	width:800px;
+	display:flex;
+	flex-direction:column;
+	background-color:antiquewhite;
+	
+}
+
+header {
+	border: 2px groove black;
+}
+
+.flex-item{
+	display:inline-flex;
+	margin-right:10px;
+}
+
+form{
+	align-self:center;
+	display:flex;
+	flex-direction:column;
+}
+
+form > input{
+	margin-bottom:10px;
+}
+
+form > label{
+	margin-top:10px;
+}
+
+a:hover{
+	background-color:azure;
+}
