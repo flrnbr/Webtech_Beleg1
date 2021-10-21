@@ -13,6 +13,7 @@ body {
 header {
 	border: 2px groove black;
 	align-self:center;
+	background-color:bisque;
 }
 
 .flex-item{
@@ -36,4 +37,9 @@ form > label{
 
 a:hover{
 	background-color:azure;
+}
+
+.column{
+	align-self:center;
+	margin-top:20px;
 }
