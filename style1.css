@@ -12,6 +12,7 @@ body {
 
 header {
 	border: 2px groove black;
+	align-self:center;
 }
 
 .flex-item{
