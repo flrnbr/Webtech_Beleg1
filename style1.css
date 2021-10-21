@@ -16,9 +16,7 @@ header {
 
 .flex-item{
 	display:inline-flex;
-	margin-right:7%;
-	width: 15%;
-	font
+	margin-right:10px;
 }
 
 form{
