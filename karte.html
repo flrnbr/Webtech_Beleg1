@@ -10,13 +10,19 @@
 <body>
     <div class="flex-container">
         <header class="column">
-            <h1 class="flex-item">TRAVELMAP</h1>
+            <h1 class="flex-item"><a href="karte.html">Travelmap</a></h1>
             <a class="flex-item" href="index.html">Login</a>
-            <a class="flex-item" href="uebersicht.html">Reiseübersicht</a>
+            <a class="flex-item" href="uebersicht.html">Reiseuebersicht</a>
             <a class="flex-item" href="karte.html">Karte</a>
-            <a class="flex-item" href="hinzufuegen.html">Reise hinzufügen</a>
+            <a class="flex-item" href="hinzufuegen.html">Reise hinzufuegen</a>
         </header>
-        <img class="column" src="images/map1.jpg" alt="Weltkarte" width="700" height="500" />
+        <img class="column" src="images/map1.jpg" alt="Weltkarte" usemap="#worldmap" width="1024" height="597" />
+
+        <map name="worldmap">
+            <area shape="rect" coords="156,221,240,278" alt="USA" href="https://de.wikipedia.org/wiki/Vereinigte_Staaten">
+            <area shape="rect" coords="603,143,834,200" alt="Russland" href="https://de.wikipedia.org/wiki/Russland">
+            <area shape="circle" coords="504,209,10" alt="Deutschland" href="https://de.wikipedia.org/wiki/Deutschland">
+        </map>
 
 
     </div>
