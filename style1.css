@@ -72,3 +72,8 @@ th{
 	color:antiquewhite;
 
 }
+
+select{
+	background:none;
+	border: 2px solid black;
+}
