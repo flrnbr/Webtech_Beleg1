@@ -8,6 +8,10 @@ body {
 	color:white;
 }
 
+h1, h2{
+	color:bisque;
+}
+
 .flex-container{
 	width:100%;
 	display:flex;
@@ -58,3 +62,13 @@ a:hover{
 	margin-top:20px;
 }
 
+th, td{
+	padding-right:10px;
+	padding-bottom:10px;
+}
+
+th{
+	font-size:larger;
+	color:antiquewhite;
+
+}
