@@ -36,7 +36,7 @@ form{
 	
 }
 
-form > input {
+input {
 		margin-bottom: 10px;
 		border: 2px groove black;
 		color: white;
