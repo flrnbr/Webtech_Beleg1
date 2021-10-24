@@ -29,15 +29,20 @@ form{
 	align-self:center;
 	display:flex;
 	flex-direction:column;
+	
 }
 
-form > input{
-	margin-bottom:10px;
+form > input {
+		margin-bottom: 10px;
+		border: 2px groove black;
+		color: white;
+		background: none;
 }
 
 form > label{
 	margin-top:10px;
 }
+
 
 a{
 	text-decoration:none;
@@ -45,7 +50,7 @@ a{
 }
 
 a:hover{
-	background-color:azure;
+	text-decoration:underline;
 }
 
 .column{
