@@ -29,22 +29,23 @@
                     
                 </tr>
                 <tr>
-                    <td><a href="karte.html">Kurztrip Russland</a></td>
+                    <td>Kurztrip Russland</td>
                     <td>Russland</td>
                     <td>24.10.21</td>
                     <td>31.10.21</td>
-                    <td><button onclick ="aendere()" class="flex-item" >bearbeiten</button><button onclick="loesche(1)">loeschen</button></td></tr>
+                    <td><button onclick ="aendere(1)" class="flex-item" >bearbeiten</button><button onclick="loesche(1)">loeschen</button></td></tr>
                 <tr>
-                    <td><a href="karte.html">Work&Travel USA</a></td>
+                    <td>Work&Travel USA</td>
                     <td>USA</td>
                     <td>19.11.21</td>
                     <td>23.12.22</td>
-                    <td><button onclick ="aendere()" class="flex-item" >bearbeiten</button><button onclick="loesche(2)">loeschen</button></td>
+                    <td><button onclick ="aendere(2)" class="flex-item" >bearbeiten</button><button onclick="loesche(2)">loeschen</button></td>
                 </tr>
             </table>
-            <form class="column" id="redo">
+            <p id="demo"></p>
+            <form class="column, invisible" id="aenderung">
                 <label for="text">Reisename:</label>
-                <input type="text" id="rname" name="rname" placeholder="Kurztrip Russland">
+                <input type="text" id="rname" name="rname" value="Kurztrip Russland">
                 <label for="text">Reiseland:</label>
                 <select id="country" name="country">
                     <option selected="selected">Russia</option>
@@ -299,7 +300,6 @@
                 <input type="date" id="sdate" name="rdate" value="2021-10-24">
                 <label for="date">Enddatum:</label>
                 <input type="date" id="edate" name="edate" value="2021-10-31">
-                <input type="submit" value="Speichern" />
             </form>
         </div>
 
@@ -314,16 +314,70 @@
             rows[i].innerHTML = "";
         }
 
-        function aendere() {
+        function safe(){
 
             var Table = document.getElementById("myTable");
             var rows = Table.getElementsByTagName("tr");
+            
+            
 
-            var col = rows[1].getElementsByTagName("td");
+            var x = Table.insertRow(Table.length);
+            
 
-            col[0].innerHTML = "Hallo";
-            col[1].innerHTML = "Welt";
-            col[2].innerHTML = "19.09.2021";
+            var x0 = x.insertCell(0);
+            var x1 = x.insertCell(1);
+            var x2 = x.insertCell(2);
+            var x3 = x.insertCell(3);
+            var x4 = x.insertCell(4);
+
+            x0.innerHTML = document.getElementById("rname").value;
+            x1.innerHTML = document.getElementById("country").value;
+            x2.innerHTML = document.getElementById("sdate").value;
+            x3.innerHTML = document.getElementById("edate").value;
+
+            var l = Table.rows.length - 1;
+
+            x4.innerHTML = '<button onclick="aendere(' + l +')" class="flex-item">bearbeiten</button><button onclick="loesche(' + l +')">loeschen</button>';
+
+
+            var myobj = document.getElementById("speicher");
+            myobj.remove();
+           
+            document.getElementById("aenderung").style.visibility = "hidden";
+            
+        }
+
+        function aendere(i) {
+
+            
+            var x = document.getElementById("myTable").rows[i].cells;
+            var form = document.getElementById("aenderung");
+
+
+            document.getElementById("demo").innerHTML = i;
+            document.getElementById("rname").value = x[0].innerHTML;
+            document.getElementById("sdate").value = x[2].innerHTML;
+            document.getElementById("edate").value = x[3].innerHTML;
+
+            var input = document.createElement("input");
+            input.type = "button";
+            input.id = "speicher";
+
+            input.onclick = function (i) {
+                
+                safe();
+
+            };
+
+            input.value = "Speichern";
+            loesche(i);
+
+
+            form.appendChild(input);
+
+            form.style.visibility = "visible";
+            
+          
             
         }
         

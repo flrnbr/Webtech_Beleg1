@@ -18,6 +18,10 @@ h1, h2{
 	flex-direction:column;	
 }
 
+.invisible{
+	visibility:hidden;
+}
+
 header {
 	border: 2px;
 	align-self:center;
