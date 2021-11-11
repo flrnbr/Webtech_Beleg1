@@ -378,6 +378,25 @@
             
         }
 
+
+        function checkCookie() {
+            let user = getCookie("username");
+
+            document.getElementById("hueber").style.visibility = "hidden";
+            document.getElementById("hkarte").style.visibility = "hidden";
+
+
+            if (user != "") {
+                alert("Welcome again " + user);
+                document.getElementById("hueber").style.visibility = "visible";
+                document.getElementById("hkarte").style.visibility = "visible";
+            } else {
+                location.href = "index.html";
+                }
+            }
+        }
+
+
         function hinzufuegen() {
 
 
