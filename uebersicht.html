@@ -15,7 +15,6 @@
             <a class="flex-item" href="index.html">Login</a>
             <a class="flex-item" href="uebersicht.html">Reiseuebersicht</a>
             <a class="flex-item" href="karte.html">Karte</a>
-            <a class="flex-item" href="hinzufuegen.html">Reise hinzufuegen</a>
         </header>   
         <div class="column">
             <h2>Reiseuebersich</h2>
@@ -26,7 +25,7 @@
                     <th>Reiseziel</th>
                     <th>Startdatum</th>
                     <th>Endatum</th>
-                    
+                    <th><button onclick="hinzufuegen()"  class="flex-item">Reise hinzufügen</button></th>
                 </tr>
                 <tr>
                     <td>Kurztrip Russland</td>
@@ -42,7 +41,6 @@
                     <td><button onclick ="aendere(2)" class="flex-item" >bearbeiten</button><button onclick="loesche(2)">loeschen</button></td>
                 </tr>
             </table>
-            <p id="demo"></p>
             <form class="column, invisible" id="aenderung">
                 <label for="text">Reisename:</label>
                 <input type="text" id="rname" name="rname" value="Kurztrip Russland">
@@ -354,7 +352,6 @@
             var form = document.getElementById("aenderung");
 
 
-            document.getElementById("demo").innerHTML = i;
             document.getElementById("rname").value = x[0].innerHTML;
             document.getElementById("sdate").value = x[2].innerHTML;
             document.getElementById("edate").value = x[3].innerHTML;
@@ -380,7 +377,36 @@
           
             
         }
-        
+
+        function hinzufuegen() {
+
+
+            var form = document.getElementById("aenderung");
+
+
+            document.getElementById("rname").value = "";
+            document.getElementById("sdate").value = "";
+            document.getElementById("edate").value = "";
+
+            var input = document.createElement("input");
+            input.type = "button";
+            input.id = "speicher";
+
+            input.onclick = function () {
+
+                safe();
+
+            };
+
+            input.value = "Speichern";
+     
+            form.appendChild(input);
+
+            form.style.visibility = "visible";
+
+
+
+        }
 
     </script>
 
