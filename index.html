@@ -9,7 +9,7 @@
     <title>Karten</title>
 </head>
 <body>
-    <div class="flex-container">
+    <div class="flex-container" onload="checkCookie()">
         <header class="column">
             <h1 class="flex-item"><a href="karte.html">Travelmap</a></h1>
             <a class="flex-item" href="index.html">Login</a>
@@ -18,13 +18,53 @@
         </header>
         <form class="column">
             <label for="email">E-Mail:</label>
-            <input type="email" id="email" name="email">
+            <input type="email" id="email" name="email" required>
             <label for="password">Passwort:</label>
-            <input type="password">
+            <input type="password" id="pwd" name="pwd" required>
             <input type="submit" value="Login"/>
         </form>     
     </div>
+    <script>
 
+    function setCookie(cname, cvalue, exdays) {
+        const d = new Date();
+        d.setTime(d.getTime() + (exdays*24*60*60*1000));
+        let expires = "expires=" + d.toGMTString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+
+        for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+
+    return "";
+    }
+
+    function checkCookie() {
+        let user = getCookie("username");
+        if (user != "") {
+            alert("Welcome again " + user);
+        } else {
+            user = prompt("Please enter your name:","");
+            if (user != "" && user != null) {
+                setCookie("username", user, 30);
+            }
+        }
+    }
+    </script>
      
 </body>
 
