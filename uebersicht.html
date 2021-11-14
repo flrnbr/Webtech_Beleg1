@@ -299,6 +299,7 @@
                 <label for="date">Enddatum:</label>
                 <input type="date" id="edate" name="edate" value="2021-10-31">
             </form>
+            <p id="demo"></p>
         </div>
 
 
@@ -417,8 +418,11 @@
             let decodedCookie = decodeURIComponent(document.cookie);
             let ca = decodedCookie.split(';');
 
+            document.getElementById("demo").innerHTML = ca[0];
+
             for (let i = 0; i < ca.length; i++) {
                 let c = ca[i];
+
 
                 while (c.charAt(0) == ' ') {
                     c = c.substring(1);
@@ -432,6 +436,7 @@
 
         function checkCookie() {
             let user = getCookie("username");
+
 
             document.getElementById("hueber").style.visibility = "hidden";
             document.getElementById("hkarte").style.visibility = "hidden";
