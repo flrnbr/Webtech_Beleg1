@@ -83,3 +83,58 @@ select{
 	background:none;
 	border: 2px solid black;
 }
+
+
+
+
+
+
+.land {
+	stroke: hsl(212, 44%, 28%);
+	stroke-width: 0.5px;
+}
+
+	.land:hover,
+	.land:focus {
+		stroke: #00000;
+		stroke-width: 1.5px;
+	}
+
+.class1 {
+	fill: hsl(60, 99%, 92%);
+}
+
+.class2 {
+	fill: hsl(45, 99%, 78%);
+}
+
+.class3 {
+	fill: hsl(40, 99%, 65%);
+}
+
+.class4 {
+	fill: hsl(32, 99%, 58%);
+}
+
+.class5 {
+	fill: hsl(24, 99%, 40%);
+}
+
+.class6 {
+	fill: hsl(18, 99%, 30%);
+}
+
+.class7 {
+	fill: hsl(212, 44%, 28%);
+	stroke: hsl(212, 44%, 28%);
+}
+
+rect {
+	stroke: hsl(212, 44%, 28%);
+	stroke-width: 0.5px;
+}
+
+.land-name {
+	text-anchor: end;
+	font-weight: bold;
+}
