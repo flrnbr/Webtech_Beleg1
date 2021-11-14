@@ -21,7 +21,7 @@
             <input type="email" id="email" name="email" required>
             <label for="password">Passwort:</label>
             <input type="password" id="pwd" name="pwd" required>
-            <input type="submit" value="Login"/>
+            <input type="button" onclick ="login()" value="Login"/>
         </form>     
     </div>
     <script>
@@ -54,6 +54,18 @@
     }
 
     function login() {
+        let email = document.getElementById("email").value;
+        let passwort = document.getElementById("pwd").value;
+
+        if (email === "flo.bauer98@web.de") {
+            if (passwort === "abcd1234") {
+                setCookie("username", email, 1);
+            } else {
+                alert("Password incorrect")
+            }
+        } else {
+            alert("Username or password incorrect");
+        }
 
     }
 
@@ -69,10 +81,7 @@
             document.getElementById("hueber").style.visibility = "visible";
             document.getElementById("hkarte").style.visibility = "visible";
         } else {
-            user = prompt("Please enter your name:","");
-            if (user != "" && user != null) {
-                setCookie("username", user, 30);
-            }
+            prompt("Please Login:");
         }
     }
     </script>
