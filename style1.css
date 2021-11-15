@@ -138,3 +138,7 @@ rect {
 	text-anchor: end;
 	font-weight: bold;
 }
+
+#map {
+	height: 180px;
+}
