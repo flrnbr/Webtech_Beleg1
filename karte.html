@@ -24,16 +24,16 @@
             <a class="flex-item" href="karte.html">Karte</a>
         </header>
 
-        <div id="map"></div>
+        <div id='map'></div>
 
     </div>
     <script>
 
         function loadMap() {
-            var mymap = L.map('map').setView([51.505, -0.09], 13);
+            var mymap = L.map('map').setView([51.505, -0.09], 4);
 
             L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png	', {
-                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             }).addTo(mymap);
 
             const visitedCountries = ['DE', 'US', 'RU'];
