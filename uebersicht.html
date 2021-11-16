@@ -303,6 +303,10 @@
                 this.end = end;
             }
 
+            toString() {
+                return '[' + this.name + ';' + this.land + ';' + this.start + ';' + this.end + ']';
+            }
+
         }
 
         function loesche(i) {
@@ -316,8 +320,7 @@
 
             var Table = document.getElementById("myTable");
             var rows = Table.getElementsByTagName("tr");
-            
-            
+
 
             var x = Table.insertRow(Table.length);
             
@@ -336,6 +339,11 @@
             x3.innerHTML = newreise.end;
 
             var l = Table.rows.length - 1;
+
+            localStorage.setItem(l, newreise.toString());
+
+
+            console.log(localStorage.getItem(l));
 
             x4.innerHTML = '<button onclick="aendere(' + l +')" class="flex-item">bearbeiten</button><button onclick="loesche(' + l +')">loeschen</button>';
 
