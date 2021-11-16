@@ -27,19 +27,7 @@
                     <th>Endatum</th>
                     <th><button onclick="hinzufuegen()"  class="flex-item">Reise hinzufügen</button></th>
                 </tr>
-                <tr>
-                    <td>Kurztrip Russland</td>
-                    <td>Russland</td>
-                    <td>24.10.21</td>
-                    <td>31.10.21</td>
-                    <td><button onclick ="aendere(1)" class="flex-item" >bearbeiten</button><button onclick="loesche(1)">loeschen</button></td></tr>
-                <tr>
-                    <td>Work&Travel USA</td>
-                    <td>USA</td>
-                    <td>19.11.21</td>
-                    <td>23.12.22</td>
-                    <td><button onclick ="aendere(2)" class="flex-item" >bearbeiten</button><button onclick="loesche(2)">loeschen</button></td>
-                </tr>
+
             </table>
             <form class="column, invisible" id="aenderung">
                 <label for="text">Reisename:</label>
@@ -306,6 +294,17 @@
     </div>
 
     <script>
+
+        class Reise {
+            constructor(name, land, start, end) {
+                this.name = name;
+                this.land = land;
+                this.start = start;
+                this.end = end;
+            }
+
+        }
+
         function loesche(i) {
             var Table = document.getElementById("myTable");
             var rows = Table.getElementsByTagName("tr");
