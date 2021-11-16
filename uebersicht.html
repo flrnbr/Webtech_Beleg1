@@ -328,7 +328,7 @@
             var x3 = x.insertCell(3);
             var x4 = x.insertCell(4);
 
-            const newreise = Reise(document.getElementById("rname").value, document.getElementById("country").value, document.getElementById("sdate").value, document.getElementById("edate").value);
+            const newreise = new Reise(document.getElementById("rname").value, document.getElementById("country").value, document.getElementById("sdate").value, document.getElementById("edate").value);
 
             x0.innerHTML = document.getElementById("rname").value;
             x1.innerHTML = document.getElementById("country").value;
