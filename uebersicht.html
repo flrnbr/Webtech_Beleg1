@@ -304,7 +304,7 @@
             }
 
             toString() {
-                return '{ "name:"'+this.name + ',"land":' + this.land + ',"start:"' + this.start + ',"end":' + this.end +'}';
+                return '{"name:"'+this.name + ',"land":' + this.land + ',"start:"' + this.start + ',"end":' + this.end +'}';
             }
 
         }
@@ -337,7 +337,7 @@
 
             const newreise = new Reise(document.getElementById("rname").value, document.getElementById("country").value, document.getElementById("sdate").value, document.getElementById("edate").value);
 
-            var obj = JSON.parse(newreise.toString());
+            var obj = JSON.parse(JSON.stringify(newreise));
 
             x0.innerHTML = obj.name;
             x1.innerHTML = obj.land;
