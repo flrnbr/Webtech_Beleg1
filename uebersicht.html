@@ -8,7 +8,7 @@
     <title></title>
     <title>Karten</title>
 </head>
-<body onload="checkCookie()">
+<body onload="checkCookie(); init();">
     <div class="flex-container">
         <header class="column">
             <h1 class="flex-item"><a href="karte.html">Travelmap</a></h1>
@@ -309,81 +309,131 @@
 
         }
 
-        function aktTab() {
+        function HolReise() {
+            var reiseArray = localStorage.getItem('reiseArray');
+            if (!reiseArray) {
+                reiseArray = [];
+                localStorage.setItem('reiseArray', JSON.stringify(reiseArray));
+            } else {
+                reiseArray = JSON.parse(reiseArray);
+            }
+            return reiseArray;
 
         }
 
-        function loesche(i) {
+        function init() {
+
+            aktTab();
+   
+        }
+
+        function aktTab() {
             var Table = document.getElementById("myTable");
             var rows = Table.getElementsByTagName("tr");
 
-            rows[i].innerHTML = "";
+            while (Table.rows.length > 1) {
+                Table.deleteRow(1);
+            }
+
+            var reiseArray = HolReise();
+
+
+            // Hilfsvariable für neue Tabellenzeilen
+            var x; 
+          
+            var x0;
+            var x1;
+            var x2;
+            var x3;
+            var x4;
+            
+            var cur;
+
+
+            for (var i = 0; i < reiseArray.length; i++) {
+
+                cur = JSON.parse(localStorage.getItem(reiseArray[i]));
+
+                x = Table.insertRow(Table.length);
+
+                x0 = x.insertCell(0);
+                x1 = x.insertCell(1);
+                x2 = x.insertCell(2);
+                x3 = x.insertCell(3);
+                x4 = x.insertCell(4);
+
+                x0.innerHTML = cur.name;
+                x1.innerHTML = cur.land;
+                x2.innerHTML = cur.start;
+                x3.innerHTML = cur.end;
+
+                x4.innerHTML = '<button onclick="aendere(' + "'" + cur.name + "'" + ')" class="flex-item">bearbeiten</button><button onclick="loesche(' + "'" + cur.name + "'" +')">loeschen</button>';
+            }
+        }
+
+        function loesche(name) {
+            reiseArray = HolReise();
+            for (var i = 0; i < reiseArray.length; i++) {
+                if (reiseArray[i] === name) {
+                    reiseArray.splice(i);
+                }
+            }
+
+            localStorage.setItem('reiseArray', JSON.stringify(reiseArray));
+
+            localStorage.removeItem(name);
+            aktTab();
         }
 
         function safe(){
 
-            var Table = document.getElementById("myTable");
-            var rows = Table.getElementsByTagName("tr");
-
-
-            var x = Table.insertRow(Table.length);
-            
-
-            var x0 = x.insertCell(0);
-            var x1 = x.insertCell(1);
-            var x2 = x.insertCell(2);
-            var x3 = x.insertCell(3);
-            var x4 = x.insertCell(4);
 
             const newreise = new Reise(document.getElementById("rname").value, document.getElementById("country").value, document.getElementById("sdate").value, document.getElementById("edate").value);
-
-            var obj = JSON.parse(JSON.stringify(newreise));
-
-            x0.innerHTML = obj.name;
-            x1.innerHTML = obj.land;
-            x2.innerHTML = obj.start;
-            x3.innerHTML = obj.end;
-
-            var l = Table.rows.length - 1;
-
-            localStorage.setItem("reise"+l, newreise.toString());
-
-            console.log(localStorage.getItem(l));
-
-            x4.innerHTML = '<button onclick="aendere(' + l +')" class="flex-item">bearbeiten</button><button onclick="loesche(' + l +')">loeschen</button>';
+            var reiseArray = HolReise();
 
 
+
+            if (reiseArray.indexOf(newreise.name) === -1) {
+                console.log(reiseArray.indexOf(name));
+                reiseArray.push(newreise.name);
+            }
+
+
+            localStorage.setItem(newreise.name, JSON.stringify(newreise));
+            localStorage.setItem('reiseArray', JSON.stringify(reiseArray));
+
+            console.log(localStorage.getItem('reiseArray'));
+            aktTab();
             var myobj = document.getElementById("speicher");
             myobj.remove();
-           
             document.getElementById("aenderung").style.visibility = "hidden";
             
         }
 
-        function aendere(i) {
+        function aendere(name) {
 
+            var reise = JSON.parse(localStorage.getItem(name));
             
-            var x = document.getElementById("myTable").rows[i].cells;
             var form = document.getElementById("aenderung");
 
 
-            document.getElementById("rname").value = x[0].innerHTML;
-            document.getElementById("sdate").value = x[2].innerHTML;
-            document.getElementById("edate").value = x[3].innerHTML;
+            document.getElementById("rname").value = reise.name;
+            document.getElementById("sdate").value = reise.start;
+            document.getElementById("edate").value = reise.end;
 
             var input = document.createElement("input");
             input.type = "button";
             input.id = "speicher";
 
-            input.onclick = function (i) {
+            input.onclick = function () {
                 
                 safe();
 
             };
 
             input.value = "Speichern";
-            loesche(i);
 
+            loesche(name);
 
             form.appendChild(input);
 
