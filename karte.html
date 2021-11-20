@@ -15,7 +15,7 @@
     <title></title>
     <title>Karten</title>
 </head>
-<body onload="loadMap()">
+<body onload="loadMap(), checkCookie()">
     <div class="flex-container">
         <header class="column">
             <h1 class="flex-item"><a href="karte.html">Travelmap</a></h1>
@@ -26,7 +26,7 @@
 
         <div id='map' class="flex-item"></div>
 
-        <button onclick="loadReisen()">Drück mich</button>
+       
 
     </div>
     <script>
@@ -34,13 +34,24 @@
         function loadMap() {
             var mymap = L.map('map').setView([51.505, -0.09], 4);
 
+            var myStyle = { // Define your style object
+                "fill": "black",
+                "stroke": "black",
+                "color": "black",
+                "weight": 0,
+                "fillOpacity": 1.0
+            };
+
+
             L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png	', {
-                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                style: myStyle
             }).addTo(mymap);
 
             var reiseArray = JSON.parse(localStorage.getItem('reiseArray'));
 
             var visitedCountries = [];
+         
 
             for (var i = 0; i < reiseArray.length; i++) {
                 visitedCountries.push(JSON.parse(localStorage.getItem(reiseArray[i])).land);
@@ -56,18 +67,33 @@
                 const filteredData = {
                     ...geoJson,
                     features: geoJson.features.filter(feature =>
-                        !visitedCountries.includes(feature.properties.name))
+                        !visitedCountries.includes(feature.properties.admin))
                 };
-                L.geoJSON(filteredData).addTo(mymap);
+            
+                L.geoJSON(filteredData, {
+                    style: myStyle
+                }).addTo(mymap);
+                
             }
 
             displayData();
         }
 
-        function loadReisen() {
+        function checkCookie() {
+            let user = getCookie("username");
 
-            console.log(localStorage.getItem('reiseArray'));
 
+            document.getElementById("hueber").style.visibility = "hidden";
+            document.getElementById("hkarte").style.visibility = "hidden";
+
+
+            if (user != "") {
+                document.getElementById("hueber").style.visibility = "visible";
+                document.getElementById("hkarte").style.visibility = "visible";
+
+            } else {
+                location.href = "index.html";
+            }
         }
     </script>
 
