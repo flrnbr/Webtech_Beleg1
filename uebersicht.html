@@ -318,6 +318,7 @@
 
         }
 
+
         function HolReise() {
             var reiseArray = localStorage.getItem('reiseArray');
             if (!reiseArray) {
@@ -329,6 +330,7 @@
             return reiseArray;
 
         }
+
 
         function init() {
 
@@ -380,6 +382,7 @@
             }
         }
 
+
         function loesche(name) {
             reiseArray = HolReise();
             for (var i = 0; i < reiseArray.length; i++) {
@@ -393,6 +396,7 @@
             localStorage.removeItem(name);
             aktTab();
         }
+
 
         function safe(){
 
