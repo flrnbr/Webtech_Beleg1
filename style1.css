@@ -76,7 +76,6 @@ th, td{
 th{
 	font-size:larger;
 	color:antiquewhite;
-	position:
 
 }
 
@@ -94,3 +93,8 @@ select{
 	
 }
 
+#blogout {
+	border: 2px solid black;
+	background: none;
+	visibility:hidden;
+}

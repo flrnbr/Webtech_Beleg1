@@ -15,6 +15,7 @@
             <a class="flex-item" id="hlogin" href="index.html">Login</a>
             <a class="flex-item" id="hueber" href="uebersicht.html">Reiseuebersicht</a>
             <a class="flex-item" id="hkarte" href="karte.html">Karte</a>
+            <button class="flex-item" type="submit" id="blogout">Logout</button>
         </header>
         <div class="flex-item" id="box">
             <form class="column">
@@ -28,6 +29,13 @@
     </div>
     <script>
 
+    function logout() {
+
+        document.cookie = encodeURIComponent("username") + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT" + ";path=/";
+        
+
+    }
+    
     function setCookie(cname, cvalue, exdays) {
         const d = new Date();
         d.setTime(d.getTime() + (exdays*24*60*60*1000));
@@ -59,8 +67,8 @@
         let email = document.getElementById("email").value;
         let passwort = document.getElementById("pwd").value;
 
-        if (email === "flo.bauer98@web.de") {
-            if (passwort === "abcd1234") {
+        if (email === "huehne@htw-berlin.de") {
+            if (passwort === "hunter2") {
                 setCookie("username", email, 1);
             } else {
                 alert("Password incorrect")
@@ -81,6 +89,7 @@
         if (user != "") {
             document.getElementById("hueber").style.visibility = "visible";
             document.getElementById("hkarte").style.visibility = "visible";
+            document.getElementById("blogout").style.visibility = "visible";
             document.getElementById("box").innerHTML = '<p class = flex-item">Du bist eingeloggt!</p>';
         } else {
             alert("Please Login:");
