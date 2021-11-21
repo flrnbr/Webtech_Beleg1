@@ -10,15 +10,14 @@
 </head>
 <body onload="checkCookie(); init();">
     <div class="flex-container">
-
+        <h1 class="flex-item"><a href="karte.html">Travelmap</a></h1>
         <header class="column">
-            <h1 class="flex-item"><a href="karte.html">Travelmap</a></h1>
             <a class="flex-item" id="hlogin" href="index.html">Login</a>
             <a class="flex-item" id="hueber" href="uebersicht.html">Reiseuebersicht</a>
             <a class="flex-item" id="hkarte" href="karte.html">Karte</a>
             <button onclick="logout()" class="flex-item" type="submit" id="blogout">Logout</button>
-        </header>   
-        
+        </header>
+
         <div class="column">
             <h2>Reiseuebersich</h2>
 
@@ -28,7 +27,7 @@
                     <th>Reiseziel</th>
                     <th>Startdatum</th>
                     <th>Endatum</th>
-                    <th><button onclick="hinzufuegen()"  class="flex-item">Reise hinzufügen</button></th>
+                    <th><button onclick="hinzufuegen()" class="flex-item">Reise hinzufügen</button></th>
                 </tr>
             </table>
             <form class="column, invisible" id="aenderung">
@@ -288,9 +287,9 @@
                 <input type="date" id="sdate" name="rdate" value="2021-10-24">
                 <label for="date">Enddatum:</label>
                 <input type="date" id="edate" name="edate" value="2021-10-31">
-                <input type="button" id="safe" value="Speichern"/>
+                <input type="button" id="safe" value="Speichern" />
             </form>
-            
+
         </div>
 
 
