@@ -22,6 +22,7 @@
             <a class="flex-item" id="hlogin" href="index.html">Login</a>
             <a class="flex-item" id="hueber" href="uebersicht.html">Reiseuebersicht</a>
             <a class="flex-item" id="hkarte" href="karte.html">Karte</a>
+            <button onclick="logout()" class="flex-item" type="submit" id="blogout">Logout</button>
         </header>
 
         <div id='map' class="flex-item"></div>
@@ -30,6 +31,13 @@
 
     </div>
     <script>
+
+        function logout() {
+
+            document.cookie = encodeURIComponent("username") + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT" + ";path=/";
+            location.href = "index.html";
+
+        }
 
         function loadMap() {
             var mymap = L.map('map').setView([51.505, -0.09], 4);

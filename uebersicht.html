@@ -15,6 +15,7 @@
             <a class="flex-item" id="hlogin" href="index.html">Login</a>
             <a class="flex-item" id="hueber" href="uebersicht.html">Reiseuebersicht</a>
             <a class="flex-item" id="hkarte" href="karte.html">Karte</a>
+            <button onclick="logout()" class="flex-item" type="submit" id="blogout">Logout</button>
         </header>   
         <div class="column">
             <h2>Reiseuebersich</h2>
@@ -306,6 +307,13 @@
             toString() {
                 return '{"name:"'+this.name + ',"land":' + this.land + ',"start:"' + this.start + ',"end":' + this.end +'}';
             }
+
+        }
+
+        function logout() {
+
+            document.cookie = encodeURIComponent("username") + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT" + ";path=/";
+            location.href = "index.html";
 
         }
 
