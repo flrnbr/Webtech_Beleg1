@@ -71,6 +71,7 @@
         if (email === "huehne@htw-berlin.de") {
             if (passwort === "hunter2") {
                 setCookie("username", email, 1);
+                location.href = "uebersicht.html";
             } else {
                 alert("Password incorrect")
             }
