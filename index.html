@@ -64,19 +64,29 @@
     return "";
     }
 
-    async function login() {
-        let email = document.getElementById("email").value;
-        let passwort = document.getElementById("pwd").value;
+        const requestLogin = (email, passwort) => {
 
-        return fetch("https://webtechbackendgruppef.herokuapp.com/login", {
-            method: "POST",
-            mode: 'cors',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            "body": JSON.stringify({ email: email, passwort: passwort })
-        })
+            console.log(email);
+            console.log(passwort);
+            return fetch("https://webtechbackendgruppef.herokuapp.com/login", {
+                method: "POST",
+                mode: 'cors',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                "body": JSON.stringify({ email: email, passwort: passwort })
+            })
+            //.then(result => result.json())
+            //.then(json => json)
+        }
+
+
+        async function login() {
+            let email = document.getElementById("email").value;
+            let passwort = document.getElementById("pwd").value;
+
+            await requestLogin(email, passwort);
 
         checkCookie();
         /*if (email === "huehne@htw-berlin.de") {
