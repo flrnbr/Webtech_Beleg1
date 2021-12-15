@@ -77,8 +77,8 @@
                 },
                 "body": JSON.stringify({ email: email, passwort: passwort })
             })
-            //.then(result => result.json())
-            //.then(json => json)
+            .then(result => result.json())
+            .then(json => json)
         }
 
 
@@ -86,7 +86,7 @@
             let email = document.getElementById("email").value;
             let passwort = document.getElementById("pwd").value;
 
-            await requestLogin(email, passwort);
+            const log = await requestLogin(email, passwort);
 
         checkCookie();
         /*if (email === "huehne@htw-berlin.de") {
