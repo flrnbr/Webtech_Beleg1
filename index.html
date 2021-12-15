@@ -78,6 +78,7 @@
             "body": JSON.stringify({ email: email, passwort: passwort })
         })
 
+        checkCookie();
         /*if (email === "huehne@htw-berlin.de") {
             if (passwort === "hunter2") {
                 setCookie("username", email, 1);
@@ -93,7 +94,7 @@
     }
 
     function checkCookie() {
-        let user = getCookie("username");
+        let user = getCookie("session-id");
 
         document.getElementById("hueber").style.visibility = "hidden";
         document.getElementById("hkarte").style.visibility = "hidden";
