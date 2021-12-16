@@ -86,10 +86,10 @@
             let email = document.getElementById("email").value;
             let passwort = document.getElementById("pwd").value;
 
-            const log = await requestLogin(email, passwort);
-            console.log(log);
+            //const log = await requestLogin(email, passwort);
+            //console.log(log);
         checkCookie();
-        /*if (email === "huehne@htw-berlin.de") {
+        if (email === "huehne@htw-berlin.de") {
             if (passwort === "hunter2") {
                 setCookie("username", email, 1);
                 location.href = "uebersicht.html";
@@ -99,12 +99,12 @@
             }
         } else {
             alert("Username or password incorrect");
-        }*/
+        }
 
     }
 
     function checkCookie() {
-        //let user = getCookie("session-id");
+        let user = getCookie("username");
         console.log("Cookies:");
         console.log(document.cookie);
         document.getElementById("hueber").style.visibility = "hidden";
@@ -112,14 +112,14 @@
         document.getElementById("blogout").style.visibility = "hidden";
         
 
-        /*if (user != "") {
+        if (user != "") {
             document.getElementById("hueber").style.visibility = "visible";
             document.getElementById("hkarte").style.visibility = "visible";
             document.getElementById("blogout").style.visibility = "visible";
             document.getElementById("box").innerHTML = '<p class = flex-item">Du bist eingeloggt!</p>';
         } else {
             alert("Please Login:");
-        }*/
+        }
         }
 
       
