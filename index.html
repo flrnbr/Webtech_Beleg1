@@ -118,7 +118,7 @@
         }
 
 
-        await function checkCookie() {
+        async function checkCookie() {
             const status = await requestAuth();
             console.log(status.auth);
             document.getElementById("hueber").style.visibility = "hidden";
