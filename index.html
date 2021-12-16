@@ -104,14 +104,15 @@
     }
 
     function checkCookie() {
-        let user = getCookie("session-id");
+        //let user = getCookie("session-id");
+        console.log("Cookies:");
         console.log(document.cookie);
         document.getElementById("hueber").style.visibility = "hidden";
         document.getElementById("hkarte").style.visibility = "hidden";
         document.getElementById("blogout").style.visibility = "hidden";
         
 
-        if (user != "") {
+        /*if (user != "") {
             document.getElementById("hueber").style.visibility = "visible";
             document.getElementById("hkarte").style.visibility = "visible";
             document.getElementById("blogout").style.visibility = "visible";
@@ -119,7 +120,7 @@
         } else {
             alert("Please Login:");
         }
-        }
+        }*/
 
       
 
