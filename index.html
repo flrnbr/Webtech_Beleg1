@@ -11,7 +11,7 @@
 <body onload="checkCookie()">
     <div class="flex-container">
         <h1 class="flex-item"><a href="karte.html">Travelmap</a></h1>
-        <header class="column">         
+        <header class="column">
             <a class="flex-item" id="hlogin" href="index.html">Login</a>
             <a class="flex-item" id="hueber" href="uebersicht.html">Reiseuebersicht</a>
             <a class="flex-item" id="hkarte" href="karte.html">Karte</a>
@@ -29,40 +29,40 @@
     </div>
     <script>
 
-    function logout() {
+        function logout() {
 
-        document.cookie = encodeURIComponent("username") + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT" + ";path=/";
-        location.href = "index.html";
+            document.cookie = encodeURIComponent("username") + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT" + ";path=/";
+            location.href = "index.html";
 
-    }
-    
-    function setCookie(cname, cvalue, exdays) {
-        const d = new Date();
-        d.setTime(d.getTime() + (exdays*24*60*60*1000));
-        let expires = "expires=" + d.toGMTString();
-        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-    }
-
-
-    function getCookie(cname) {
-        let name = cname + "=";
-        let decodedCookie = decodeURIComponent(document.cookie);
-        let ca = decodedCookie.split(';');
-
-        for (let i = 0; i < ca.length; i++) {
-            let c = ca[i];
-
-            while (c.charAt(0) == ' ') {
-                c = c.substring(1);
-            }
-
-            if (c.indexOf(name) == 0) {
-                return c.substring(name.length, c.length);
-            }
         }
 
-    return "";
-    }
+        function setCookie(cname, cvalue, exdays) {
+            const d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            let expires = "expires=" + d.toGMTString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+
+            return "";
+        }
 
         const requestLogin = (email, passwort) => {
 
@@ -77,8 +77,8 @@
                 },
                 "body": JSON.stringify({ email: email, passwort: passwort })
             })
-            .then(result => result.json())
-            .then(json => json)
+                .then(result => result.json())
+                .then(json => json)
         }
 
 
@@ -86,47 +86,61 @@
             let email = document.getElementById("email").value;
             let passwort = document.getElementById("pwd").value;
 
-            //const log = await requestLogin(email, passwort);
-            //console.log(log);
-        checkCookie();
-        if (email === "huehne@htw-berlin.de") {
-            if (passwort === "hunter2") {
-                setCookie("username", email, 1);
-                location.href = "uebersicht.html";
-                console.log("redirect");
+            const log = await requestLogin(email, passwort);
+            console.log(log);
+            checkCookie();
+            /*if (email === "huehne@htw-berlin.de") {
+                if (passwort === "hunter2") {
+                    setCookie("username", email, 1);
+                    location.href = "uebersicht.html";
+                    console.log("redirect");
+                } else {
+                    alert("Password incorrect")
+                }
             } else {
-                alert("Password incorrect")
+                alert("Username or password incorrect");
+            }*/
+
+        }
+
+        const requestAuth = () => {
+
+            return fetch("https://webtechbackendgruppef.herokuapp.com/auth", {
+                method: "POST",
+                mode: 'cors',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(result => result.json())
+                .then(json => json)
+        }
+
+
+        await function checkCookie() {
+            const status = await requestAuth();
+            console.log(status.auth);
+            document.getElementById("hueber").style.visibility = "hidden";
+            document.getElementById("hkarte").style.visibility = "hidden";
+            document.getElementById("blogout").style.visibility = "hidden";
+
+
+            if (status.auth) {
+                document.getElementById("hueber").style.visibility = "visible";
+                document.getElementById("hkarte").style.visibility = "visible";
+                document.getElementById("blogout").style.visibility = "visible";
+                document.getElementById("box").innerHTML = '<p class = flex-item">Du bist eingeloggt!</p>';
+            } else {
+                alert("Please Login:");
             }
-        } else {
-            alert("Username or password incorrect");
         }
 
-    }
 
-    function checkCookie() {
-        let user = getCookie("username");
-        console.log("Cookies:");
-        console.log(document.cookie);
-        document.getElementById("hueber").style.visibility = "hidden";
-        document.getElementById("hkarte").style.visibility = "hidden";
-        document.getElementById("blogout").style.visibility = "hidden";
-        
-
-        if (user != "") {
-            document.getElementById("hueber").style.visibility = "visible";
-            document.getElementById("hkarte").style.visibility = "visible";
-            document.getElementById("blogout").style.visibility = "visible";
-            document.getElementById("box").innerHTML = '<p class = flex-item">Du bist eingeloggt!</p>';
-        } else {
-            alert("Please Login:");
-        }
-        }
-
-      
 
 
     </script>
-     
+
 </body>
 
 </html>
